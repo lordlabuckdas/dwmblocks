@@ -1,0 +1,27 @@
+#!/bin/sh
+
+battery="/sys/class/power_supply/BAT0"
+cap="$(cat "$battery/capacity")"
+sts="$(cat "$battery/status")"
+chg_sts=""
+
+if [ "$sts" != "Discharging" ]; then
+	chg_sts="⚡ "
+fi
+
+if [ $cap -eq 100 ]; then
+	icon=" "
+elif [ $cap -gt 75 ]; then
+	icon=" "
+elif [ $cap -gt 50 ]; then
+	icon=" "
+elif [ $cap -gt 25 ]; then
+	icon=" "
+else
+	icon=" "
+	if [ "$sts" != "Charging" ]; then
+		notify-send "Battery Low! Plug in ASAP!"
+	fi
+fi
+
+printf "%s%s%d%%" "$chg_sts" "$icon" "$cap" && exit 0
