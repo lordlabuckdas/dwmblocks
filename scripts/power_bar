@@ -19,9 +19,10 @@ elif [ $cap -gt 25 ]; then
 	icon=" "
 else
 	icon=" "
-	if [ "$sts" != "Charging" ]; then
-		notify-send "Battery Low! Plug in ASAP!"
-	fi
+fi
+
+if [ $cap -lt 10 ] && [ "$sts" != "Charging" ]; then
+	notify-send "Battery Low! Plug in ASAP!"
 fi
 
 printf "%s%s%d%%" "$chg_sts" "$icon" "$cap" && exit 0
