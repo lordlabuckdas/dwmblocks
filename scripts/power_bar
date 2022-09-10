@@ -10,15 +10,15 @@ if [ "$sts" != "Discharging" ]; then
 fi
 
 if [ $cap -eq 100 ]; then
-	icon=" "
+	icon="  "
 elif [ $cap -gt 75 ]; then
-	icon=" "
+	icon="  "
 elif [ $cap -gt 50 ]; then
-	icon=" "
+	icon="  "
 elif [ $cap -gt 25 ]; then
-	icon=" "
+	icon="  "
 else
-	icon=" "
+	icon="  "
 fi
 
 if [ $cap -lt 10 ] && [ "$sts" != "Charging" ]; then
